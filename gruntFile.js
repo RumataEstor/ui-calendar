@@ -5,7 +5,7 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'karma']);
+  grunt.registerTask('default', ['jshint', 'karma', 'uglify']);
 
   var testConfig = function(configFile, customOptions) {
     var options = { configFile: configFile, keepalive: true };
@@ -33,6 +33,12 @@ module.exports = function (grunt) {
         boss:true,
         eqnull:true,
         globals:{}
+      }
+    },
+    uglify: {
+      build: {
+        src: ['src/**/*.js'],
+        dest: 'calendar.min.js'
       }
     }
   });
